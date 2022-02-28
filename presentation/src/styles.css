@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.flex-container {
+    font-family: fantasy;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    width: 50%;
+    background-color: #fff;
+    border-radius: 10px;
+    display: inline-flex;
+}
+
+.flex-item {
+    padding: 75px 60px;
+    width: 55%;
+}
+
+.item {
+    background-color: #47decf;
+    width: 45%;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.name-title {
+    color: #47decf;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.sub {
+    color: #444444;
+    font-size: bold;
+}
+
+.flex-item p {
+   line-height: 22px;
+}
+
+.image {
+    border-radius: 50%;
+    width: 10em;
+}
