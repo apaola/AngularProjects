@@ -10,6 +10,11 @@ export class ListPersonComponent implements OnInit {
 
   public personas: Persona[] = [];
   public nombre: string = '';
+  public titulo: string = '';
+  public bio: string = '';
+  public id: number = 0;
+  
+
   constructor() { }
 
   ngOnInit(): void {
@@ -17,10 +22,10 @@ export class ListPersonComponent implements OnInit {
 
   public agregar() {
     let persona: Persona = {
-      id: 0,
+      id: this.id,
       nombre: this.nombre,
-      titulo: '',
-      bio: ''
+      titulo: this.titulo,
+      bio: this.bio
     };
     this.personas.push(persona);
   }

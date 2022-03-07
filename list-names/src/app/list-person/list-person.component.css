@@ -1,0 +1,15 @@
+input,
+label {
+    display: block;
+}
+
+input,
+textarea {
+    margin-bottom: 25px;
+    padding: 7px;
+    width: 300px;
+}
+
+.container {
+    margin: 50px 40px;
+}

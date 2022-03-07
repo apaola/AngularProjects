@@ -1,7 +1,22 @@
-<div>
-    <input type="text" name="nombre" [(ngModel)]="nombre">
-    <button (click)="agregar()">Agregar</button>
-</div>
-<div>
-    <app-item-person *ngFor="let persona of personas" [persona]="persona"></app-item-person>
+<div class="container">
+    <h2>Registrar Persona</h2>
+    <div class="form">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" [(ngModel)]="nombre">
+
+        <label for="titulo">Titulo</label>
+        <input type="text" name="titulo" [(ngModel)]="titulo">
+
+        <label for="bio">Bio</label>
+        <textarea type="text" name="bio" [(ngModel)]="bio"></textarea>
+
+        <label for="id">Id</label>
+        <input type="text" name="id" [(ngModel)]="id">
+
+        <button (click)="agregar()">Agregar</button>
+    </div>
+    <div>
+        <h1>Listado de Personas</h1>
+        <app-item-person *ngFor="let persona of personas" [persona]="persona"></app-item-person>
+    </div>
 </div>

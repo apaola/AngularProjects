@@ -12,7 +12,7 @@ export class ItemPersonComponent implements OnInit {
   public persona: Persona = {
     id: 0,
     nombre: "Alba",
-    titulo: '',
+    titulo: "",
     bio: ""
   };
 
