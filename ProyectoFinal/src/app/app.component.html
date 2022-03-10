@@ -6,18 +6,23 @@
 </ul>
 
  and an actual outlet elsewhere -->
+<div class="container">
+    <div class="my-5">
+        dsf
 
-
-<div class="d-flex">
-
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
-        <li [ngbNavItem]="link.fragment" *ngFor="let link of links">
-            <a ngbNavLink routerLink=".">{{ link.title }}</a>
-            <ng-template ngbNavContent></ng-template>
-        </li>
-    </ul>
-    <div [ngbNavOutlet]="nav" class="ms-4"></div>
+        <div class="">
+            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+                <li [ngbNavItem]="link.fragment" *ngFor="let link of links">
+                    <a ngbNavLink routerLink=".">{{ link.title }}</a>
+                    <ng-template ngbNavContent></ng-template>
+                </li>
+            </ul>
+            <div [ngbNavOutlet]="nav" class="ms-4"></div>
+        </div>
+    </div>
 </div>
+
+
 
 <pre>Active: {{ active }}</pre>
 
