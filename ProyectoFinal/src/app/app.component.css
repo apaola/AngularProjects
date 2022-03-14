@@ -1,4 +1,32 @@
-.container {
+container {
     background-color: #fafafa;
     min-height: 500px;
 }
+
+/*.sidebar {
+    max-width: 230px;
+}*/
+
+nav ul {
+    width: 100%;
+}
+
+nav {
+    height: 100%;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #0b1009;
+    font-weight: 700;
+    border-radius: 1rem;
+}
+
+.nav-link {
+    padding: 13px;
+    color: #161616;
+}
+
+.nav-pills .nav-link {
+    border-radius: 1rem;
+  }
