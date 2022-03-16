@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  page = 1;
   
   links = [
     { title: 'One', fragment: 'one' },

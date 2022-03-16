@@ -1,45 +1,27 @@
-<!-- your navs bound to current route fragments 
-<ul ngbNav [activeId]="route.fragment | async" class="nav-tabs">
-    <li [ngbNavItem]="link.fragment" *ngFor="let link of links">
-        <a ngbNavLink routerLink="." [fragment]="link.fragment">{{ link.title }}</a>
-    </li>
-</ul>
-
- and an actual outlet elsewhere -->
-<div class="container">
-    <div class="my-5">
-        dsf
-
-        <div class="">
-            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
-                <li [ngbNavItem]="link.fragment" *ngFor="let link of links">
-                    <a ngbNavLink routerLink=".">{{ link.title }}</a>
+<!--SIDEBAR-->
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-xxl-2">
+            <div class="">Hola, Bienvenido</div>
+            <ul class="nav-pills" ngbNav #nav="ngbNav" [(activeId)]="active" orientation="vertical">
+                <li class="nav-item" [ngbNavItem]="link.fragment" *ngFor="let link of links">
+                    <a class="nav-link" ngbNavLink routerLink="."><span class="me-5"></span>{{ link.title }}</a>
                     <ng-template ngbNavContent></ng-template>
                 </li>
             </ul>
             <div [ngbNavOutlet]="nav" class="ms-4"></div>
-        </div>
+        </nav>
+        <main class="col-10" style="background-color: #dfe7ea; height: 100vh;">
+
+            <!--no se que poner /pulgar arriba
+                <pre>Active: {{ active }}</pre> LISTADO-->
+            <app-table-complete></app-table-complete>
+            <!--<p>Restricted size with rotation and no ellipses:</p>
+                <ngb-pagination class="d-flex justify-content-end" [collectionSize]="120" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+                <pre>Current page: {{page}}</pre>-->
+
+
+
+        </main>
     </div>
 </div>
-
-
-
-<pre>Active: {{ active }}</pre>
-
-<!--<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
-        <li ngbNavItem="top">
-            <a ngbNavLink>Top</a>
-            <ng-template ngbNavContent>
-            </ng-template>
-        </li>
-        <li ngbNavItem="middle">
-            <a ngbNavLink>Middle</a>
-            <ng-template ngbNavContent>
-            </ng-template>
-        </li>
-        <li ngbNavItem="bottom">
-            <a ngbNavLink>Bottom</a>
-            <ng-template ngbNavContent>
-            </ng-template>
-        </li>
-    </ul>-->
