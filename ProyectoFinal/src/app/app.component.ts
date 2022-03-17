@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,16 +6,5 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  page = 1;
-  
-  links = [
-    { title: 'One', fragment: 'one' },
-    { title: 'Two', fragment: 'two' }
-  ];
-  
-  active = 'one';
-
-  constructor(public route: ActivatedRoute) {}
-  
+  title = 'proyectoFinal';
 }
