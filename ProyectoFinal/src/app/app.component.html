@@ -1,19 +1,177 @@
 <!--SIDEBAR-->
 <div class="container-fluid">
-    <div class="row">
-        <nav class="col-2">
-            <div class="">Hola, Bienvenido</div>
-            <ul class="nav-pills" ngbNav #nav="ngbNav" [(activeId)]="active" orientation="vertical">
-                <li class="nav-item" [ngbNavItem]="link.fragment" *ngFor="let link of links">
-                    <a class="nav-link" ngbNavLink routerLink="."><span class="me-5"></span>{{ link.title }}</a>
-                    <ng-template ngbNavContent></ng-template>
-                </li>
-            </ul>
-            <div [ngbNavOutlet]="nav" class="ms-4"></div>
-        </nav>
-        <main class="col-10" style="background-color: #dfe7ea;">
-            no se que poner /pulgar arriba
-            <pre>Active: {{ active }}</pre>
-        </main>
-    </div>
+  <div class="row vh-100">
+    <nav class="col-12 col-xxl-2 px-4">
+
+      <div class="">Hola, Bienvenido</div>
+      <ul class="nav-pills" ngbNav #nav="ngbNav" [(activeId)]="active" orientation="vertical">
+        <li class="nav-item" [ngbNavItem]="link.fragment" *ngFor="let link of links">
+          <a class="nav-link" ngbNavLink routerLink="."><span class="me-5"></span>{{ link.title }}</a>
+          <ng-template ngbNavContent></ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav" class="ms-4"></div>
+
+    </nav>
+
+
+    <main class="col-12 col-xxl-10 ps-4 pe-5" style="background-color: #dfe7ea;">
+      no se que poner /pulgar arriba
+      <pre>Active: {{ active }}</pre>
+      <div class="mb-5">
+        <div class="mb-4">
+          <h5 class="">Categor&iacute;as Favoritas con Gastos</h5>
+        </div>
+        <div class="row g-4 g-lg-4">
+          <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6">
+            <div class="card">
+              <div class="card-head">
+                <span class="">ICONO</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Luz</h5>
+                <p class="card-text">$DOP 500</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6">
+            <div class="card">
+              <div class="card-head">
+                <span class="">ICONO</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Luz</h5>
+                <p class="card-text">$DOP 500</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6">
+            <div class="card">
+              <div class="card-head">
+                <span class="">ICONO</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Luz</h5>
+                <p class="card-text">$DOP 500</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6">
+            <div class="card">
+              <div class="card-head">
+                <span class="">ICONO</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Luz</h5>
+                <p class="card-text">$DOP 500</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6">
+            <div class="card">
+              <div class="card-head">
+                <span class="">ICONO</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Luz</h5>
+                <p class="card-text">$DOP 500</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-6">
+            <div class="card">
+              <div class="card-head">
+                <span class="">ICONO</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Luz</h5>
+                <p class="card-text">$DOP 500</p>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+          <!--<div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-sm-4 col-md-3">
+                      <div class="card">
+                        <div class="card-head">                                
+                            <span class="">ICONO</span>
+                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Luz</h5>
+                            <p class="card-text">$DOP 500</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-2">
+                      <div class="card">
+                        <div class="card-head">                                
+                            <span class="">ICONO</span>
+                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Luz</h5>
+                            <p class="card-text">$DOP 500</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-2">
+                        <div class="card">
+                          <div class="card-head">                                
+                              <span class="">ICONO</span>
+                              </div>
+                          <div class="card-body">
+                              <h5 class="card-title">Luz</h5>
+                              <p class="card-text">$DOP 500</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6 col-sm-3 col-md-2">
+                        <div class="card">
+                          <div class="card-head">                                
+                              <span class="">ICONO</span>
+                              </div>
+                          <div class="card-body">
+                              <h5 class="card-title">Luz</h5>
+                              <p class="card-text">$DOP 500</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-6 col-sm-3 col-md-2">
+                        <div class="card">
+                          <div class="card-head">                                
+                              <span class="">ICONO</span>
+                              </div>
+                          <div class="card-body">
+                              <h5 class="card-title">Luz</h5>
+                              <p class="card-text">$DOP 500</p>
+                          </div>
+                        </div>
+                      </div>
+                  </div>-->
+        </div>
+      </div>
+    </main>
+  </div>
 </div>
+
+<!--row g-5 g-xl-10
+    
+    col-sm-6 col-xl-2 mb-xl-10-->

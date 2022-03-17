@@ -3,3 +3,7 @@
 /*body {
    background-color: #dfe8e9;
 }*/
+
+html, body {
+   height: 100%;
+}
