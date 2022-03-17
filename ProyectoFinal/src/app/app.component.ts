@@ -11,8 +11,8 @@ export class AppComponent {
   page = 1;
   
   links = [
-    { title: 'One', fragment: 'one' },
-    { title: 'Two', fragment: 'two' }
+    { title: 'Inicio', fragment: 'one' },
+    { title: 'Ahorros', fragment: 'two' }
   ];
   
   active = 'one';
