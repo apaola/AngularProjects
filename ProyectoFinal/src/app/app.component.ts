@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  @Input() tittle: string = 'APP COMPONENTE';
 
   page = 1;
   

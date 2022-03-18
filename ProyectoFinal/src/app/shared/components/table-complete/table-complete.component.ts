@@ -1,5 +1,5 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
@@ -15,6 +15,9 @@ import { SortableDirective, SortEvent } from '../../directives/sortable.directiv
   providers: [CountryService, DecimalPipe]
 })
 export class TableCompleteComponent implements OnInit {
+
+  @Input() tittle: string = "TABLA COMPONENTE";
+
 
   countries$: Observable<Country[]>;
   total$: Observable<number>;

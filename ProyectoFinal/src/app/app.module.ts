@@ -10,6 +10,11 @@ import { SortableDirective } from './shared/directives/sortable.directive';
 import { TableCompleteComponent } from './shared/components/table-complete/table-complete.component';
 import { CommonModule } from '@angular/common';
 
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from '../environments/environment';
+
+
 
 @NgModule({
   declarations: [
@@ -23,7 +28,9 @@ import { CommonModule } from '@angular/common';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
