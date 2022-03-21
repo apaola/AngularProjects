@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'category',
     loadChildren: () => import('./core/components/category/category.module').then(m => m.CategoryModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./core/components/dashboard/dashboard.module').then(m => m.DashboardModule)
   }
 ];
 
