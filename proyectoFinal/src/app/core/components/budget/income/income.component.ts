@@ -34,8 +34,7 @@ export class IncomeComponent implements OnInit {
   closeResult?: string;
 
   categoryId = '';
-
-  type = 'Gastos';
+  //categ: Category[];
 
   constructor(public categoryService: CategoryService, public budgetService: BudgetService, private router: Router,
     private route: ActivatedRoute) { }
@@ -44,34 +43,15 @@ export class IncomeComponent implements OnInit {
     //this.transactionId = this.route.snapshot.params["id"];
     //console.log(this.categoryId);
     //this.loadCategory();
-    this.loadCategory2();
+    this.getAllCategory();
   }
-
-  /*async loadCategory() {
-    this.categoryService.getCategoryType(this.types.INCOME).subscribe(res => {
-      this.category = res;
-      console.log(this.types.INCOME);
-      console.log(this.category);
-    });
-  }*/
-
-  async loadCategory2() {
-    this.categoryService.getCategoryType(this.type).subscribe(res => {
-      this.category = res;
-      console.log(this.type);
-      console.log(this.category);
-    });
-  }
-
-  async loadCategory() {
-    this.categoryService.getCategory(this.type).subscribe(res => {
-      this.category = res;
-    });
-  }
-
+  
   getAllCategory() {
     this.categoryService.getAll().subscribe(res => {
       this.category = res;
+      let ingresos = this.category.filter(tipo => tipo.tipo === Type.INCOME);
+      //console.log(ingresos);
+      this.category = ingresos;
     })
   }
 

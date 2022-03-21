@@ -63,10 +63,6 @@ export class BudgetService {
     });
   }
 
-  getTypes(tipo: Type) {
-    return this.types?.filter( t => t.tipo === tipo);
-  }
-
   get cantidad() {
     return this.form.get("cantidad");
   }

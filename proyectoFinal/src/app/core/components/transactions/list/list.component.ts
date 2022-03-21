@@ -31,7 +31,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllTransactions();
-    this.budgetService.size();
+    //this.budgetService.size();
   }
 
   getAllTransactions() {

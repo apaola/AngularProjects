@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { Category } from '../models/category';
+import { Type } from '../models/type';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,11 @@ export class CategoryService {
   private categoryCollection: AngularFirestoreCollection<Category>;
   private category: Observable<Category[]>;
   ref: any;
+  types: any;
 
-  constructor(private db: AngularFirestore, private formBuilder: FormBuilder) { 
+  categ: Category[] = [];
+
+  constructor(private db: AngularFirestore, private formBuilder: FormBuilder) {
     this.categoryCollection = db.collection<Category>('/categorias');
     this.category = this.categoryCollection.snapshotChanges().pipe(map(
       actions => {
@@ -29,7 +33,7 @@ export class CategoryService {
 
     this.form = this.formBuilder.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
-      tipo: ['',[Validators.required]],
+      tipo: ['', [Validators.required]],
       descripcion: ['']
     });
   }
@@ -41,16 +45,6 @@ export class CategoryService {
   getCategory(id: string) {
     return this.categoryCollection.doc<any>(id).valueChanges();
   }
-
-  getCategoryType(type: string) {
-    return this.categoryCollection.doc<any>(type).valueChanges();
-    /*const ref = this.db.collection('categorias');
-    const snapshot = await this.ref.where('tipo', '==', type).get();
-    snapshot.forEach((doc: { id: any; data: () => any; }) => {
-      console.log(doc.id, '=>', doc.data());
-    });*/
-  }
-
 
   create(category: any) {
     return this.categoryCollection.add(category);
@@ -65,7 +59,7 @@ export class CategoryService {
   }
 
   size() {
-    this.db.collection("categorias").get().subscribe(res => { 
+    this.db.collection("categorias").get().subscribe(res => {
       console.log(res.size)
     });
   }
@@ -76,6 +70,10 @@ export class CategoryService {
 
   get tipo() {
     return this.form.get("tipo");
+  }
+
+  public getTypes(category: any): Category[] {
+    return this.categ.filter( t => t.tipo === category)
   }
 
 }

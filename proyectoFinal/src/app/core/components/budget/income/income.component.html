@@ -4,9 +4,7 @@
 
             <div>
                 <label>Cuenta</label>
-                <select class="form-select"
-                    [ngClass]="this.categoryService.tipo?.touched && this.categoryService.tipo?.errors ? 'is-invalid' : ''"
-                    aria-label="Default select example" formControlName="tipo">
+                <select class="form-select" [ngClass]="this.categoryService.tipo?.touched && this.categoryService.tipo?.errors ? 'is-invalid' : ''" aria-label="Default select example" formControlName="tipo">
                     <option hidden>Open this select menu</option>
                     <option class="" [ngValue]="cat.id" *ngFor="let cat of category">{{ cat.nombre }}
                     </option>
@@ -16,9 +14,7 @@
 
             <div class="form-group">
                 <label for="title">Cantidad</label>
-                <input type="number"
-                    [ngClass]="this.categoryService.nombre?.touched && this.categoryService.nombre?.errors ? 'is-invalid' : ''"
-                    class="form-control" id="title" formControlName="nombre" [(ngModel)]="transaction.cantidad" />
+                <input type="number" [ngClass]="this.categoryService.nombre?.touched && this.categoryService.nombre?.errors ? 'is-invalid' : ''" class="form-control" id="title" formControlName="nombre" [(ngModel)]="transaction.cantidad" />
                 <div *ngIf="this.categoryService['nombre']errors" class="invalid-feedback">
                     <div *ngIf="this.categoryService['nombre']errors['required'];">Este campo es obligatorio</div>
                     <div *ngIf="this.categoryService['nombre']errors['minLength'];">Este campo no puede ser menor a 3
@@ -28,9 +24,7 @@
 
             <div class="form-group">
                 <label for="title">Fecha</label>
-                <input type="date"
-                    [ngClass]="this.categoryService.nombre?.touched && this.categoryService.nombre?.errors ? 'is-invalid' : ''"
-                    class="form-control" id="title" formControlName="nombre" [(ngModel)]="transaction.cantidad" />
+                <input type="date" [ngClass]="this.categoryService.nombre?.touched && this.categoryService.nombre?.errors ? 'is-invalid' : ''" class="form-control" id="title" formControlName="nombre" [(ngModel)]="transaction.cantidad" />
                 <div *ngIf="this.categoryService['nombre']errors" class="invalid-feedback">
                     <div *ngIf="this.categoryService['nombre']errors['required'];">Este campo es obligatorio</div>
                     <div *ngIf="this.categoryService['nombre']errors['minLength'];">Este campo no puede ser menor a 3

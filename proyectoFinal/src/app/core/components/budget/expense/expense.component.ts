@@ -26,14 +26,17 @@ export class ExpenseComponent implements OnInit {
 
   ngOnInit(): void {
     //this.loadCategory();
+    this.getAllCategory();
   }
 
-  /*async loadCategory() {
-    this.categoryService.getCategoryType(this.types.EXPENSE).subscribe(res => {
+  getAllCategory() {
+    this.categoryService.getAll().subscribe(res => {
       this.category = res;
-      console.log(this.types.EXPENSE);
-      console.log(this.category);
-    });*
-  }*/
+      let ingresos = this.category.filter(tipo => tipo.tipo === Type.EXPENSE);
+      //console.log(ingresos);
+      this.category = ingresos;
+    })
+  }
+
 
 }
