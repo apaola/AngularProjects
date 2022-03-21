@@ -1,46 +1,101 @@
-<div class="submit-form">
-    <form [formGroup]="this.categoryService.form">
+<header class="mb-5">
+    <div class="header-page pt-5">
+        <h1 class="fs-1">Ingresos</h1>
+    </div>
+    <div class="sub-header">
+        <h6 class="fs-6 text-muted">Ingresos ° Registrar</h6>
+    </div>
+</header>
+
+<div class="card border-0 rounded-3">
+    <div class="card-header border-0 pa-4 pt-5">
+        <h5 class="card-title">Registrar ingresos</h5>
+    </div>
+
+    <form [formGroup]="this.budgetService.form" class="needs-validation">
+        <div class="card-body pa-4 pt-4 pb-5">
+
+
+            <div class="mb-f row">
+                <label class="col-lg-3 col-form-label text-end" for="">Cuenta:</label>
+                <div class="col-lg-9 col-xl-4">
+                    <select class="form-select" [ngClass]="this.budgetService.idCategoria?.touched && this.budgetService.idCategoria?.errors ? 'is-invalid' : ''" aria-label="Default select example" [(ngModel)]="transaction.idCategoria" formControlName="idCategoria">
+                        <option hidden>Seleccione una opci&oacute;n</option>
+                        <option class="" [ngValue]="cat.id" *ngFor="let cat of category">{{ cat.nombre }}
+                    </select>
+                    <div class="invalid-feedback" *ngIf="this.categoryService['tipo']errors['required'];">Debe seleccionar una opción</div>
+                </div>
+            </div>
+
+            <div class="mb-f row">
+                <label class="col-lg-3 col-form-label text-end" for="">Cantidad:</label>
+                <div class="col-lg-9 col-xl-4">
+                    <input type="number" [ngClass]="this.budgetService.cantidad?.touched && this.budgetService.cantidad?.errors ? 'is-invalid' : ''" class="form-control form-control-md" formControlName="cantidad" [(ngModel)]="transaction.cantidad">
+                    <div *ngIf="this.categoryService['nombre']errors" class="invalid-feedback">
+                        <div *ngIf="this.categoryService['nombre']errors['required'];">Este campo es obligatorio</div>
+                        <div *ngIf="this.categoryService['nombre']errors['minLength'];">Este campo no puede ser menor a 10
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-f row">
+                <label class="col-lg-3 col-form-label text-end" for="">Fecha:</label>
+                <div class="col-lg-9 col-xl-4">
+                    <input [ngClass]="this.budgetService.fecha?.touched && this.budgetService.fecha?.errors ? 'is-invalid' : ''" class="form-control form-control-md" type="date" formControlName="fecha" [(ngModel)]="transaction.fecha">
+                    <div *ngIf="this.budgetService['fecha']errors" class="invalid-feedback">
+                        <div *ngIf="this.budgetService['fecha']errors['required'];">Este campo es obligatorio</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer p-4 text-end">
+            <button class="btn btn-outline-danger btn-lg me-2" routerLink="/transaction">Cancelar</button>
+            <button href="#" class="btn btn-success btn-lg" (click)="save()">Guardar cambios</button>
+        </div>
+    </form>
+</div>
+
+<!--<div class="submit-form">
+    <form [formGroup]="this.budgetService.form">
         <div *ngIf="!submitted">
 
             <div>
-                <label>Cuenta</label>
-                <select class="form-select" [ngClass]="this.categoryService.tipo?.touched && this.categoryService.tipo?.errors ? 'is-invalid' : ''" aria-label="Default select example" formControlName="tipo">
+                <select class="form-select" [ngClass]="this.budgetService.idCategoria?.touched && this.budgetService.idCategoria?.errors ? 'is-invalid' : ''" aria-label="Default select example" [(ngModel)]="transaction.idCategoria" formControlName="idCategoria">
                     <option hidden>Open this select menu</option>
                     <option class="" [ngValue]="cat.id" *ngFor="let cat of category">{{ cat.nombre }}
                     </option>
                 </select>
-                <div class="invalid-feedback" *ngIf="this.categoryService['tipo']errors['required'];">Debe seleccionar una opción</div>
+                <div class="invalid-feedback" *ngIf="this.budgetService['idCategoria']errors['required'];">Debe seleccionar una opción</div>
             </div>
 
             <div class="form-group">
                 <label for="title">Cantidad</label>
-                <input type="number" [ngClass]="this.categoryService.nombre?.touched && this.categoryService.nombre?.errors ? 'is-invalid' : ''" class="form-control" id="title" formControlName="nombre" [(ngModel)]="transaction.cantidad" />
-                <div *ngIf="this.categoryService['nombre']errors" class="invalid-feedback">
-                    <div *ngIf="this.categoryService['nombre']errors['required'];">Este campo es obligatorio</div>
-                    <div *ngIf="this.categoryService['nombre']errors['minLength'];">Este campo no puede ser menor a 3
-                    </div>
+                <input type="number" [ngClass]="this.budgetService.cantidad?.touched && this.budgetService.cantidad?.errors ? 'is-invalid' : ''" class="form-control" id="title" formControlName="cantidad" [(ngModel)]="transaction.cantidad" />
+                <div *ngIf="this.budgetService['cantidad']errors" class="invalid-feedback">
+                    <div *ngIf="this.budgetService['cantidad']errors['required'];">Este campo es obligatorio</div>
+                    <div *ngIf="this.budgetService['cantidad']errors['min'];">Este campo no puede ser menor a 10</div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="title">Fecha</label>
-                <input type="date" [ngClass]="this.categoryService.nombre?.touched && this.categoryService.nombre?.errors ? 'is-invalid' : ''" class="form-control" id="title" formControlName="nombre" [(ngModel)]="transaction.cantidad" />
-                <div *ngIf="this.categoryService['nombre']errors" class="invalid-feedback">
-                    <div *ngIf="this.categoryService['nombre']errors['required'];">Este campo es obligatorio</div>
-                    <div *ngIf="this.categoryService['nombre']errors['minLength'];">Este campo no puede ser menor a 3
-                    </div>
+                <input type="date" [ngClass]="this.budgetService.fecha?.touched && this.budgetService.fecha?.errors ? 'is-invalid' : ''" class="form-control" id="title" formControlName="fecha" [(ngModel)]="transaction.fecha" />
+                <div *ngIf="this.budgetService['fecha']errors" class="invalid-feedback">
+                    <div *ngIf="this.budgetService['fecha']errors['required'];">Este campo es obligatorio</div>
                 </div>
             </div>
 
-            <button class="btn btn-success">Submit</button>
-            <button class="btn btn-success" routerLink="/category/list">Cancel</button>
+            <button class="btn btn-success" (click)="save()">Submit</button>
+            <button class="btn btn-success" routerLink="/transactions">Cancel</button>
         </div>
 
         <!--[disabled]="this.categoryService.form.invalid" 
         COLOCAR UN MODAL POR SI DESEA INGRESAR OTRA CATEGORIA-->
-        <!--<div *ngIf="submitted">
+<!--<div *ngIf="submitted">
         <h4>You submitted successfully!</h4>
         <button class="btn btn-success">Add</button>
-    </div>-->
+    </div>
     </form>
-</div>
+</div>-->

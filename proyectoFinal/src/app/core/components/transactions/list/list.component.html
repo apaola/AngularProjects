@@ -1,28 +1,40 @@
-<p>list works!</p>
+<header class="mb-5">
+    <div class="header-page pt-5">
+        <h1 class="fs-1">Transacciones</h1>
+    </div>
+    <div class="sub-header">
+        <h6 class="fs-6 text-muted">Transacciones ° Listado</h6>
+    </div>
+</header>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Cuenta</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Accion</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let transactions of transaction; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ transactions.cantidad }}</td>
-            <td>{{ transactions.fecha }}</td>
-            <td>
-                <a href="#" [routerLink]="['/category/manage/', transactions.id]">Editar</a>
-                <button class="btn btn-outline-primary mb-2 me-2" (click)="openVerticallyCentered(content, transactions.id)">Eliminar</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="card border-0 rounded-3">
+    <!--<div class="card-header border-0 pa-4 pt-4 text-end">
+        <button class="btn btn-success btn-lg" routerLink="/category/manage">Agregar</button>
+    </div>-->
+    <div class="card-body pa-4 pt-4 pb-5">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transactions of transaction; index as i;">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ transactions.cantidad | currency: 'DOP'}}</td>
+                    <td>{{ transactions.fecha | date: 'MMMM d, y' | titlecase }}</td>
+                    <td>
+                        <!--  <a href="#" [routerLink]="['/category/manage/', transactions.id]">Editar</a>
+                <button class="btn btn-outline-primary mb-2 me-2" (click)="openVerticallyCentered(content, transactions.id)">Eliminar</button>-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
 
 <ng-template #content let-modal>
     <div class="modal-header">

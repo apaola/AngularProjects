@@ -14,8 +14,6 @@ export class CategoryService {
 
   private categoryCollection: AngularFirestoreCollection<Category>;
   private category: Observable<Category[]>;
-  ref: any;
-  types: any;
 
   categ: Category[] = [];
 

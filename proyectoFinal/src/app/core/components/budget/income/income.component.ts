@@ -55,4 +55,19 @@ export class IncomeComponent implements OnInit {
     })
   }
 
+  save() {
+    if (this.budgetService.form.valid) {
+      if (this.transactionId) {
+        //console.log('hay id');
+        this.budgetService.update(this.transactionId, this.transaction);
+      } else {
+        this.budgetService.create(this.transaction);
+      }
+      //this.submitted = true;
+      this.router.navigate(['/transactions']);
+    } else {
+      this.budgetService.form.markAllAsTouched();
+    }
+  }
+
 }

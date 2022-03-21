@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Category } from 'src/app/core/models/category';
 import { Transaction } from 'src/app/core/models/transaction';
 import { BudgetService } from 'src/app/core/services/budget.service';
+import { CategoryService } from 'src/app/core/services/category.service';
 
 @Component({
   selector: 'app-list',
@@ -15,6 +17,7 @@ export class ListComponent implements OnInit {
   modal?: NgbModalRef;
 
   transaction?: Transaction[];
+  category?: Category[];
 
   categoryId = '';
 
@@ -27,12 +30,19 @@ export class ListComponent implements OnInit {
   ];*/
 
 
-  constructor(private budgetService: BudgetService, private modalService: NgbModal) { }
+  constructor(private budgetService: BudgetService, private categoryService: CategoryService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getAllTransactions();
+    //this.getAllRef();
     //this.budgetService.size();
   }
+
+  
+
+  /*getAllRef() {
+    console.log(this.budgetService.getAllDocs());
+  }*/
 
   getAllTransactions() {
     this.budgetService.getAll().subscribe(res => {

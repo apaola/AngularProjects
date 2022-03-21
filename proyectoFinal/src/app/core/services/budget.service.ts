@@ -10,15 +10,17 @@ import { Type } from '../models/type';
   providedIn: 'root'
 })
 export class BudgetService {
-  
+
   public form: FormGroup;
 
   types?: Category[];
 
   private transactionCollection: AngularFirestoreCollection<Transaction>;
   private transaction: Observable<Transaction[]>;
+  angularFirestore: any;
+  //dbList: AngularFirestoreCollection<any>;
 
-  constructor(private db: AngularFirestore, private formBuilder: FormBuilder) { 
+  constructor(private db: AngularFirestore, private formBuilder: FormBuilder) {
     this.transactionCollection = db.collection<Transaction>('/transacciones');
     this.transaction = this.transactionCollection.snapshotChanges().pipe(map(
       actions => {
@@ -30,12 +32,52 @@ export class BudgetService {
       }
     ));
 
+    /*this.dbList = this.db.collection<any>('/categorias/', ref => {
+      return ref.where('id','==','TkhBD9Wb9H3yAyp3OUVC');
+    });*/
+
     this.form = this.formBuilder.group({
       cantidad: ['', [Validators.required, Validators.min(10)]],
-      fecha: ['',[Validators.required]],
-      idCategoria: ['']
+      fecha: ['', [Validators.required]],
+      idCategoria: ['', [Validators.required]]
     });
   }
+
+  /*getAllDocs() {
+    this.db.collection("transacciones").snapshotChanges().pipe(map(
+      changes => {
+        return changes.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id }
+        });
+      }
+      )).subscribe(items => {
+        const promises: any[] = [];
+
+        items.forEach(item => {
+          promises.push(this.angularFirestore.collection('categorias').doc(item.id));
+        });
+        return Promise.all(promises);
+        console.log(items);
+      })
+
+  }*/
+
+  /*public async getCollectionRef(entity: string): Promise<AngularFirestoreCollection<unknown>> {
+    const ref = this.
+          collection(entity);
+    return ref;
+  }*/
+
+  /*getCollection(): AngularFirestoreCollection<any> {
+    return this.dbList;
+  }
+
+  getObservable(): Observable<any[]> {
+    return this.dbList.valueChanges();
+    // or return this.dblist.snapshotChanges();
+  }*/
 
   getAll() {
     return this.transaction;
@@ -45,8 +87,8 @@ export class BudgetService {
     return this.transactionCollection.doc<any>(id).valueChanges();
   }
 
-  create(category: Transaction) {
-    return this.transactionCollection.add(category);
+  create(transaction: Transaction) {
+    return this.transactionCollection.add(transaction);
   }
 
   update(id: string, data: any) {
@@ -58,7 +100,7 @@ export class BudgetService {
   }
 
   size() {
-    this.db.collection("transacciones").get().subscribe(res => { 
+    this.db.collection("transacciones").get().subscribe(res => {
       console.log(res.size)
     });
   }
@@ -69,5 +111,9 @@ export class BudgetService {
 
   get fecha() {
     return this.form.get("fecha");
+  }
+
+  get idCategoria() {
+    return this.form.get("idCategoria");
   }
 }

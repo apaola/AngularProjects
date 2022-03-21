@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +12,11 @@ import { environment } from '../environments/environment';
 import { TableCompleteComponent } from './shared/components/table-complete/table-complete.component';
 import { SortableDirective } from './shared/directives/sortable.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
+
+//importar locales
+import localEs from '@angular/common/locales/es-DO';
+registerLocaleData(localEs, 'es');
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { CommonModule } from '@angular/common';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-DO' }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

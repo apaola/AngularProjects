@@ -1,18 +1,24 @@
 <!--SIDEBAR-->
-<div>
-    <div>
-        <nav>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-2">
             <div class="">Hola, Bienvenido</div>
+
             <ul class="nav-pills" ngbNav #nav="ngbNav" [(activeId)]="active" orientation="vertical">
                 <li class="nav-item" [ngbNavItem]="link.fragment" *ngFor="let link of links">
-                    <a class="nav-link" ngbNavLink [routerLink]="link.link"><span class=""></span>{{ link.title }}</a>
+                    <a class="nav-link" ngbNavLink [routerLink]="link.link"><i class="{{ link.icon }} me-3"></i>{{ link.title }}</a>
                     <ng-template ngbNavContent></ng-template>
                 </li>
             </ul>
             <div [ngbNavOutlet]="nav" class="ms-4"></div>
+            <!--<pre>Active: {{ active }}</pre>-->
         </nav>
-        <pre>Active: {{ active }}</pre>
+
+        <main class="col-10">
+            <div class="container-xxl">
+                <router-outlet></router-outlet>
+            </div>
+        </main>
+
     </div>
 </div>
-
-<router-outlet></router-outlet>
