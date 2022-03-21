@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'proyectoFinal';
+ 
+  links = [
+    { title: 'Inicio', fragment: 'one', link: '' },
+    { title: 'Transacciones', fragment: 'two', link: 'transactions' },
+    { title: 'Ingresos', fragment: 'three', link: 'budget/income' },
+    { title: 'Gastos', fragment: 'four', link: 'budget/expense' },
+    { title: 'Categorías', fragment: 'five', link: 'category/list' }
+  ];
+  
+  active = 'one';
 }

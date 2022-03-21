@@ -9,14 +9,24 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 
+import { TableCompleteComponent } from './shared/components/table-complete/table-complete.component';
+import { SortableDirective } from './shared/directives/sortable.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TableCompleteComponent,
+    SortableDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
