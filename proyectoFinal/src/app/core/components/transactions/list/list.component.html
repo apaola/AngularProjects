@@ -1,1 +1,39 @@
 <p>list works!</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Cuenta</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transactions of transaction; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ transactions.cantidad }}</td>
+            <td>{{ transactions.fecha }}</td>
+            <td>
+                <a href="#" [routerLink]="['/category/manage/', transactions.id]">Editar</a>
+                <button class="btn btn-outline-primary mb-2 me-2" (click)="openVerticallyCentered(content, transactions.id)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <!--<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>-->
+    </div>
+    <div class="modal-body">
+        <p>One fine body&hellip;</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="deleteTransaction(transactionId)">Eliminar</button>
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

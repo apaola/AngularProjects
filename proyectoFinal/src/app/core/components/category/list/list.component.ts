@@ -1,10 +1,7 @@
 import { Component, OnInit, PipeTransform, ViewEncapsulation } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryService } from 'src/app/core/services/category.service';
-import { map } from 'rxjs/operators';
 import { Category } from 'src/app/core/models/category';
-
-
 
 @Component({
   selector: 'app-list',
@@ -20,13 +17,13 @@ export class ListComponent implements OnInit {
 
   category?: Category[];
 
-  categories: Category[] = [
+  /*categories: Category[] = [
     {
       nombre: '',
       tipo: '',
       descripcion: ''
     }
-  ];
+  ];*/
 
 
   constructor(private categoryService: CategoryService, private modalService: NgbModal) { }

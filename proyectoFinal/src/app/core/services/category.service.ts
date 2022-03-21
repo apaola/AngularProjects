@@ -13,6 +13,7 @@ export class CategoryService {
 
   private categoryCollection: AngularFirestoreCollection<Category>;
   private category: Observable<Category[]>;
+  ref: any;
 
   constructor(private db: AngularFirestore, private formBuilder: FormBuilder) { 
     this.categoryCollection = db.collection<Category>('/categorias');
@@ -41,7 +42,17 @@ export class CategoryService {
     return this.categoryCollection.doc<any>(id).valueChanges();
   }
 
-  create(category: Category) {
+  getCategoryType(type: string) {
+    return this.categoryCollection.doc<any>(type).valueChanges();
+    /*const ref = this.db.collection('categorias');
+    const snapshot = await this.ref.where('tipo', '==', type).get();
+    snapshot.forEach((doc: { id: any; data: () => any; }) => {
+      console.log(doc.id, '=>', doc.data());
+    });*/
+  }
+
+
+  create(category: any) {
     return this.categoryCollection.add(category);
   }
 
@@ -58,7 +69,6 @@ export class CategoryService {
       console.log(res.size)
     });
   }
- 
 
   get nombre() {
     return this.form.get("nombre");
