@@ -11,6 +11,20 @@
 
 <body>
     <app-root></app-root>
+
+    <script>
+        const primaryNav = document.querySelector('#navBar');
+        const navToggle = document.querySelector('#collapsibleNavbar');
+
+        console.log(navToggle);
+        console.log(primaryNav);
+    
+        navToggle.addEventListener('click', () => {
+            const visibility = primaryNav.getAttribute('data-visible');
+    
+            console.log('dfddf');
+        });
+    </script>
 </body>
 
 </html>

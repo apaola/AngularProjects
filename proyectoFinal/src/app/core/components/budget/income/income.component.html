@@ -17,7 +17,7 @@
 
 
             <div class="mb-f row">
-                <label class="col-lg-3 col-form-label text-end" for="">Cuenta:</label>
+                <label class="col-lg-3 col-form-label text-lg-end" for="">Cuenta:</label>
                 <div class="col-lg-9 col-xl-4">
                     <select class="form-select" [ngClass]="this.budgetService.cuenta?.touched && this.budgetService.cuenta?.errors ? 'is-invalid' : ''" aria-label="Default select example" [(ngModel)]="transaction.cuenta" formControlName="cuenta">
                         <option hidden>Seleccione una opci&oacute;n</option>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="mb-f row">
-                <label class="col-lg-3 col-form-label text-end" for="">Cantidad:</label>
+                <label class="col-lg-3 col-form-label text-lg-end" for="">Cantidad:</label>
                 <div class="col-lg-9 col-xl-4">
                     <input type="number" [ngClass]="this.budgetService.cantidad?.touched && this.budgetService.cantidad?.errors ? 'is-invalid' : ''" class="form-control form-control-md" formControlName="cantidad" [(ngModel)]="transaction.cantidad">
                     <div *ngIf="this.categoryService['nombre']errors" class="invalid-feedback">
@@ -40,7 +40,7 @@
             </div>
 
             <div class="mb-f row">
-                <label class="col-lg-3 col-form-label text-end" for="">Fecha:</label>
+                <label class="col-lg-3 col-form-label text-lg-end" for="">Fecha:</label>
                 <div class="col-lg-9 col-xl-4">
                     <input [ngClass]="this.budgetService.fecha?.touched && this.budgetService.fecha?.errors ? 'is-invalid' : ''" class="form-control form-control-md" type="date" formControlName="fecha" [(ngModel)]="transaction.fecha">
                     <div *ngIf="this.budgetService['fecha']errors" class="invalid-feedback">

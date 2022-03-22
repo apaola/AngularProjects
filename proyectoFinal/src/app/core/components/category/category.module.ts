@@ -4,6 +4,7 @@ import { ListComponent } from './list/list.component';
 import { ManageComponent } from './manage/manage.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TableFilterPipe } from './list/table-filter.pipe';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ListComponent,
-    ManageComponent
+    ManageComponent,
+    TableFilterPipe
   ],
   imports: [
     CommonModule,

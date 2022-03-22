@@ -74,4 +74,6 @@ export class CategoryService {
     return this.categ.filter( t => t.tipo === category)
   }
 
+
+
 }
