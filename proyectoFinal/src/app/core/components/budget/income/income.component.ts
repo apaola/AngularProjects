@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { Category } from 'src/app/core/models/category';
 import { BudgetService } from 'src/app/core/services/budget.service';
 import { Transaction } from 'src/app/core/models/transaction';
 import { Type } from 'src/app/core/models/type';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbNav } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-income',
@@ -14,11 +15,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class IncomeComponent implements OnInit {
 
   submitted = false;
+  active = 1;
+
   transactionId = '';
-  transaction: Transaction = {
+  transaction: Transaction = {    
     cantidad: 0,
     fecha: '',
-    idCategoria: ''
+    tipo: 'Ingresos',
+    cuenta: ''
   };
   
   category?: Category[];
@@ -45,7 +49,7 @@ export class IncomeComponent implements OnInit {
     //this.loadCategory();
     this.getAllCategory();
   }
-  
+
   getAllCategory() {
     this.categoryService.getAll().subscribe(res => {
       this.category = res;
@@ -60,14 +64,19 @@ export class IncomeComponent implements OnInit {
       if (this.transactionId) {
         //console.log('hay id');
         this.budgetService.update(this.transactionId, this.transaction);
+        //console.log(this.transaction);
       } else {
         this.budgetService.create(this.transaction);
+        //console.log(this.transaction);
       }
-      //this.submitted = true;
       this.router.navigate(['/transactions']);
-    } else {
+    } 
+    
+    /*else {
       this.budgetService.form.markAllAsTouched();
-    }
+    }*/
   }
+
+
 
 }

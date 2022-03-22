@@ -4,5 +4,6 @@ export interface Transaction {
     id?: string,
     cantidad?: number,
     fecha?: string,
-    idCategoria?: string
+    tipo?: string,
+    cuenta?: string
 }

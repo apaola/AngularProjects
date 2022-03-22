@@ -18,10 +18,11 @@ export class ExpenseComponent implements OnInit {
   category?: Category[];
 
   transactionId = '';
-  transaction: Transaction = {
+  transaction: Transaction = {    
     cantidad: 0,
     fecha: '',
-    idCategoria: ''
+    tipo: 'Gastos',
+    cuenta: ''
   };
 
   constructor(public categoryService: CategoryService, public budgetService: BudgetService, private router: Router,
@@ -46,14 +47,18 @@ export class ExpenseComponent implements OnInit {
       if (this.transactionId) {
         //console.log('hay id');
         this.budgetService.update(this.transactionId, this.transaction);
+        //console.log(this.transaction);
       } else {
         this.budgetService.create(this.transaction);
+        //console.log(this.transaction);
       }
       //this.submitted = true;
       this.router.navigate(['/transactions']);
-    } else {
+    } 
+    
+    /*else {
       this.budgetService.form.markAllAsTouched();
-    }
+    }*/
   }
 
 }

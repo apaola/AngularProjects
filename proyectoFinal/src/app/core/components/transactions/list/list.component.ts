@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Category } from 'src/app/core/models/category';
 import { Transaction } from 'src/app/core/models/transaction';
@@ -20,6 +20,7 @@ export class ListComponent implements OnInit {
   category?: Category[];
 
   categoryId = '';
+
 
   /*categories: Category[] = [
     {

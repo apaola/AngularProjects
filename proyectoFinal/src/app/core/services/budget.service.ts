@@ -39,7 +39,7 @@ export class BudgetService {
     this.form = this.formBuilder.group({
       cantidad: ['', [Validators.required, Validators.min(10)]],
       fecha: ['', [Validators.required]],
-      idCategoria: ['', [Validators.required]]
+      cuenta: ['', [Validators.required]]
     });
   }
 
@@ -113,7 +113,7 @@ export class BudgetService {
     return this.form.get("fecha");
   }
 
-  get idCategoria() {
-    return this.form.get("idCategoria");
+  get cuenta() {
+    return this.form.get("cuenta");
   }
 }
