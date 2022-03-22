@@ -9,8 +9,6 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 
-import { TableCompleteComponent } from './shared/components/table-complete/table-complete.component';
-import { SortableDirective } from './shared/directives/sortable.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, registerLocaleData } from '@angular/common';
 
@@ -20,9 +18,7 @@ registerLocaleData(localEs, 'es');
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TableCompleteComponent,
-    SortableDirective
+    AppComponent
   ],
   imports: [
     BrowserModule,
