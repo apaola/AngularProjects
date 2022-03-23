@@ -16,6 +16,7 @@ export class ListComponent implements OnInit {
   modal?: NgbModalRef;
 
   category?: Category[];
+  allCategories?: any[];
 
 
   constructor(private categoryService: CategoryService, private modalService: NgbModal) { }
@@ -27,7 +28,28 @@ export class ListComponent implements OnInit {
   getAllCategory() {
     this.categoryService.getAll().subscribe(res => {
       this.category = res;
+      this.allCategories = res;
     })
+  }
+
+  applyFilter(filterValue: any) {
+    filterValue = filterValue.target.value;
+    if(filterValue != ''){
+      this.category = this.allCategories?.filter((item) => item.tipo.includes(filterValue));
+    } else {
+      this.category = this.allCategories;
+    }
+  }
+
+  filter(filterValue: any){
+    filterValue = filterValue.target.value;
+    filterValue.toLowerCase();
+    console.log(filterValue);
+    if(filterValue != ''){
+      this.category = this.allCategories?.filter((item) => item.nombre.toLowerCase().includes(filterValue));
+    } else {
+      this.category = this.allCategories;
+    }
   }
 
   async deleteCategory(categoryId: string) {
