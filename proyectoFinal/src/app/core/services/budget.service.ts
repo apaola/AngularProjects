@@ -11,14 +11,13 @@ import { Type } from '../models/type';
 })
 export class BudgetService {
 
-  public form: FormGroup;
+  public form2: FormGroup;
+  public form3: FormGroup;
 
   types?: Category[];
 
   private transactionCollection: AngularFirestoreCollection<Transaction>;
   private transaction: Observable<Transaction[]>;
-  angularFirestore: any;
-  //dbList: AngularFirestoreCollection<any>;
 
   constructor(private db: AngularFirestore, private formBuilder: FormBuilder) {
     this.transactionCollection = db.collection<Transaction>('/transacciones');
@@ -32,52 +31,18 @@ export class BudgetService {
       }
     ));
 
-    /*this.dbList = this.db.collection<any>('/categorias/', ref => {
-      return ref.where('id','==','TkhBD9Wb9H3yAyp3OUVC');
-    });*/
+    this.form2 = this.formBuilder.group({
+      cantidad: ['', [Validators.required, Validators.min(10)]],
+      fecha: ['', [Validators.required]],
+      cuenta: ['', [Validators.required]]
+    });
 
-    this.form = this.formBuilder.group({
+    this.form3 = this.formBuilder.group({
       cantidad: ['', [Validators.required, Validators.min(10)]],
       fecha: ['', [Validators.required]],
       cuenta: ['', [Validators.required]]
     });
   }
-
-  /*getAllDocs() {
-    this.db.collection("transacciones").snapshotChanges().pipe(map(
-      changes => {
-        return changes.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return { id }
-        });
-      }
-      )).subscribe(items => {
-        const promises: any[] = [];
-
-        items.forEach(item => {
-          promises.push(this.angularFirestore.collection('categorias').doc(item.id));
-        });
-        return Promise.all(promises);
-        console.log(items);
-      })
-
-  }*/
-
-  /*public async getCollectionRef(entity: string): Promise<AngularFirestoreCollection<unknown>> {
-    const ref = this.
-          collection(entity);
-    return ref;
-  }*/
-
-  /*getCollection(): AngularFirestoreCollection<any> {
-    return this.dbList;
-  }
-
-  getObservable(): Observable<any[]> {
-    return this.dbList.valueChanges();
-    // or return this.dblist.snapshotChanges();
-  }*/
 
   getAll() {
     return this.transaction;
@@ -106,14 +71,26 @@ export class BudgetService {
   }
 
   get cantidad() {
-    return this.form.get("cantidad");
+    return this.form2.get("cantidad");
   }
 
   get fecha() {
-    return this.form.get("fecha");
+    return this.form2.get("fecha");
   }
 
   get cuenta() {
-    return this.form.get("cuenta");
+    return this.form2.get("cuenta");
+  }
+
+  get cantidad1() {
+    return this.form3.get("cantidad");
+  }
+
+  get fecha1() {
+    return this.form3.get("fecha");
+  }
+
+  get cuenta1() {
+    return this.form3.get("cuenta");
   }
 }

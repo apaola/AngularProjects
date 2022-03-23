@@ -12,7 +12,7 @@
         <h5 class="card-title">Registrar ingresos</h5>
     </div>
 
-    <form [formGroup]="this.budgetService.form" class="needs-validation">
+    <form [formGroup]="this.budgetService.form2" class="needs-validation">
         <div class="card-body pa-4 pt-4 pb-5">
 
 
@@ -20,7 +20,6 @@
                 <label class="col-lg-3 col-form-label text-lg-end" for="">Cuenta:</label>
                 <div class="col-lg-9 col-xl-4">
                     <select class="form-select" [ngClass]="this.budgetService.cuenta?.touched && this.budgetService.cuenta?.errors ? 'is-invalid' : ''" aria-label="Default select example" [(ngModel)]="transaction.cuenta" formControlName="cuenta">
-                        <option hidden>Seleccione una opci&oacute;n</option>
                         <option class="" [ngValue]="cat.nombre" *ngFor="let cat of category">{{ cat.nombre }}
                     </select>
                     <div class="invalid-feedback" *ngIf="this.categoryService['tipo']errors['required'];">Debe seleccionar una opción</div>
@@ -31,9 +30,9 @@
                 <label class="col-lg-3 col-form-label text-lg-end" for="">Cantidad:</label>
                 <div class="col-lg-9 col-xl-4">
                     <input type="number" [ngClass]="this.budgetService.cantidad?.touched && this.budgetService.cantidad?.errors ? 'is-invalid' : ''" class="form-control form-control-md" formControlName="cantidad" [(ngModel)]="transaction.cantidad">
-                    <div *ngIf="this.categoryService['nombre']errors" class="invalid-feedback">
-                        <div *ngIf="this.categoryService['nombre']errors['required'];">Este campo es obligatorio</div>
-                        <div *ngIf="this.categoryService['nombre']errors['minLength'];">Este campo no puede ser menor a 10
+                    <div *ngIf="this.budgetService['cantidad']errors" class="invalid-feedback">
+                        <div *ngIf="this.budgetService['cantidad']errors['required'];">Este campo es obligatorio</div>
+                        <div *ngIf="this.budgetService['cantidad']errors['min'];">Este campo no puede ser menor a 10
                         </div>
                     </div>
                 </div>

@@ -6,6 +6,8 @@
         <h6 class="fs-6 text-muted">Categor&iacute;as ° Listado</h6>
     </div>
 </header>
+<input id="myInput2" type="text" placeholder="Buscar...">
+<br><br>
 
     <div class="card border-0 rounded-3">
         <div class="card-header border-0 pa-4 pt-4 text-end">
@@ -21,14 +23,13 @@
                         <th scope="col">Accion</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable2">
                     <tr *ngFor="let category of category; index as i;">
                         <th scope="row">{{ i + 1 }}</th>
                         <td>{{ category.nombre }}</td>
                         <td>{{ category.tipo }}</td>
                         <td>
-                            <button class="btn btn-warning"
-                                [routerLink]="['/category/manage/', category.id]">Editar</button>
+                            <button class="btn btn-warning" [routerLink]="['/category/manage/',category.id]">Editar</button>
                             <button class="btn btn-danger ms-2"
                                 (click)="openVerticallyCentered(content, category.id)">Eliminar</button>
                         </td>

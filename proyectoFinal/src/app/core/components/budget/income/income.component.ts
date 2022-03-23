@@ -44,9 +44,6 @@ export class IncomeComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    //this.transactionId = this.route.snapshot.params["id"];
-    //console.log(this.categoryId);
-    //this.loadCategory();
     this.getAllCategory();
   }
 
@@ -54,27 +51,21 @@ export class IncomeComponent implements OnInit {
     this.categoryService.getAll().subscribe(res => {
       this.category = res;
       let ingresos = this.category.filter(tipo => tipo.tipo === Type.INCOME);
-      //console.log(ingresos);
       this.category = ingresos;
     })
   }
 
   save() {
-    if (this.budgetService.form.valid) {
+    if (this.budgetService.form2.valid) {
       if (this.transactionId) {
-        //console.log('hay id');
         this.budgetService.update(this.transactionId, this.transaction);
-        //console.log(this.transaction);
       } else {
         this.budgetService.create(this.transaction);
-        //console.log(this.transaction);
       }
       this.router.navigate(['/transactions']);
-    } 
-    
-    /*else {
-      this.budgetService.form.markAllAsTouched();
-    }*/
+    } else {
+      this.budgetService.form2.markAllAsTouched();
+    }
   }
 
 

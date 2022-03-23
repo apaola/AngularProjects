@@ -15,7 +15,6 @@ export class ManageComponent implements OnInit {
 
   public types = Type;
 
-  submitted = false;
   categoryId = '';
   category: Category = {
     nombre: '',
@@ -32,7 +31,6 @@ export class ManageComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryId = this.route.snapshot.params["id"];
-    //console.log(this.categoryId);
     if (this.categoryId) {
       this.loadCategory();
     }
@@ -47,21 +45,14 @@ export class ManageComponent implements OnInit {
   save() {
     if (this.categoryService.form.valid) {
       if (this.categoryId) {
-        //console.log('hay id');
         this.categoryService.update(this.categoryId, this.category);
       } else {
         this.categoryService.create(this.category);
       }
-      this.submitted = true;
       this.router.navigate(['/category/list']);
     } else {
       this.categoryService.form.markAllAsTouched();
     }
   }
-
-  /*newCategory(): void {
-    this.submitted = false;
-  }*/
-
 
 }

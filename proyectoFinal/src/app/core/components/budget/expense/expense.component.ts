@@ -37,28 +37,21 @@ export class ExpenseComponent implements OnInit {
     this.categoryService.getAll().subscribe(res => {
       this.category = res;
       let ingresos = this.category.filter(tipo => tipo.tipo === Type.EXPENSE);
-      //console.log(ingresos);
       this.category = ingresos;
     })
   }
 
   save() {
-    if (this.budgetService.form.valid) {
+    if (this.budgetService.form3.valid) {
       if (this.transactionId) {
-        //console.log('hay id');
         this.budgetService.update(this.transactionId, this.transaction);
-        //console.log(this.transaction);
       } else {
         this.budgetService.create(this.transaction);
-        //console.log(this.transaction);
       }
-      //this.submitted = true;
       this.router.navigate(['/transactions']);
-    } 
-    
-    /*else {
-      this.budgetService.form.markAllAsTouched();
-    }*/
+    } else {
+      this.budgetService.form3.markAllAsTouched();
+    }
   }
 
 }

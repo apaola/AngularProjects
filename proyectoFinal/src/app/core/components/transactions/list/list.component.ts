@@ -21,29 +21,11 @@ export class ListComponent implements OnInit {
 
   categoryId = '';
 
-
-  /*categories: Category[] = [
-    {
-      nombre: '',
-      tipo: '',
-      descripcion: ''
-    }
-  ];*/
-
-
   constructor(private budgetService: BudgetService, private categoryService: CategoryService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getAllTransactions();
-    //this.getAllRef();
-    //this.budgetService.size();
   }
-
-  
-
-  /*getAllRef() {
-    console.log(this.budgetService.getAllDocs());
-  }*/
 
   getAllTransactions() {
     this.budgetService.getAll().subscribe(res => {
@@ -53,7 +35,6 @@ export class ListComponent implements OnInit {
 
   async deleteTransaction(transactionId: string) {
     this.budgetService.delete(transactionId);
-    //console.log(categoryId);
     this.getAllTransactions();
     this.modalService.dismissAll();
   }

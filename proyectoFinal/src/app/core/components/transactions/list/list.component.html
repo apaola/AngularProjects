@@ -6,11 +6,16 @@
         <h6 class="fs-6 text-muted">Transacciones ° Listado</h6>
     </div>
 </header>
+<input id="myInput" type="text" placeholder="Buscar...">
+
+<select name="tipo" id="tipo">
+    <option value="s">Seleccione una opción...</option>
+    <option value="Gastos">Gastos</option>
+    <option value="Ingresos">Ingresos</option>
+</select>
+<br><br>
 
 <div class="card border-0 rounded-3">
-    <!--<div class="card-header border-0 pa-4 pt-4 text-end">
-        <button class="btn btn-success btn-lg" routerLink="/category/manage">Agregar</button>
-    </div>-->
     <div class="card-body pa-4 pt-4 pb-5">
         <table class="table table-borderless">
             <thead>
@@ -21,7 +26,7 @@
                     <th scope="col">Transacciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="myTable">
                 <tr *ngFor="let transactions of transaction; index as i;">
                     <th scope="row">{{ i + 1 }}</th>
                     <td>{{ transactions.cantidad | currency: 'DOP'}}</td>
